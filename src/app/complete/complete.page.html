@@ -1,0 +1,54 @@
+<main>
+  <h1>Ejercicio completado</h1>
+  <section>
+    <div class="card">
+      <h4>Recuperar todas las categorías</h4>
+      <button (click)="getCategories()" class="magic-button">
+        Click
+      </button>
+    </div>
+
+    <div class="categories">
+
+      <div *ngFor="let cat of categories" class="card category-card">
+        <h2>{{cat.name}}</h2>
+        <div class="img-container">
+          <img
+            [src]="cat.imageUrl"
+            alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="card">
+      <h4>Recuperar todas los productos</h4>
+      <button (click)="getProducts()" class="magic-button">
+        Click
+      </button>
+      <div class="prev-next">
+        <button [disabled]="!isPrevPage" (click)="getProductsPrev()" class="magic-button">
+          Prev
+        </button>
+        <h3 class="page-number">{{productPage}}</h3>
+        <button [disabled]="!isNextPage"  (click)="getProductsNext()" class="magic-button">
+          Next
+        </button>
+      </div>
+    </div>
+
+    <div class="products">
+      <div *ngFor="let prod of products" class="card product-card">
+        <div class="data">
+          <p>Name: {{ prod.productName }}</p>
+          <p>Brand: {{ prod.brand }}</p>
+          <p>Price: {{ prod.price }}€</p>
+        </div>
+        <div class="img-container">
+          <img
+            [src]="prod.imageUrl || 'assets/no-image.png'">
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
